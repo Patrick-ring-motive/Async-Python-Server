@@ -14,7 +14,7 @@ class handler(BaseHTTPRequestHandler):
 
   async def do_ASYNC(request, data):
       path = f"{os.getcwd()}{request.path}".split("?")[0].split("#")[0];
-      contentType = mimetypes.guess_type(path)
+      contentType = mimetypes.guess_type(path,strict=False)
       print(path,contentType[0])
       content = zreadFileBytes(path)
       await zsendHeaders(request,{'status':200,'Content-type':contentType[0]})
