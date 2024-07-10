@@ -28,3 +28,6 @@ def delete(obj, attr):
     return obj
   except:
     return obj
+
+def println(*args, **kwargs):
+  return print(*args,"\n",**kwargs)
