@@ -1,8 +1,11 @@
 
 def b(str):
-  return bytes(str, 'utf8')
+    return bytes(str, 'utf8')
 
-def zreadFile(filename):
+async def zreadFile(filename):
+    return zread_file(filename)
+
+def zread_file(filename):
   try:
     thisFile = open(filename, "r") 
     txt = thisFile.read()
@@ -14,7 +17,10 @@ def zreadFile(filename):
     else:
         return f"{e}"
 
-def zreadFileBytes(filename):
+async def zreadFileBytes(filename):
+    return zread_file_bytes(filename)
+
+def zread_file_bytes(filename):
     try:
         thisFile = open(filename, mode="rb") 
         bts = thisFile.read()

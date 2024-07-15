@@ -16,10 +16,10 @@ class handler(BaseHTTPRequestHandler):
       path = f"{os.getcwd()}{request.path}".split("?")[0].split("#")[0];
       contentType = mimetypes.guess_type(path,strict=False)
       print(path,contentType[0])
-      content = zreadFileBytes(path)
+      content = await zreadFileBytes(path)
       await zsendHeaders(request,{'status':200,'Content-type':contentType[0]})
       await zwriteResponseBody(request, content)
-
+      
   def do_METHOD(request):
     asyncio.run(request.do_ASYNC(request))
 
